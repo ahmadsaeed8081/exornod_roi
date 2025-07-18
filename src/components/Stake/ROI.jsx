@@ -228,10 +228,10 @@ const ROI = (props) => {
             <div className="tw-py-4 tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-items-start xs:tw-items-center tw-gap-3">
               <div className="tw-w-full sm:tw-w-7/12">
                 <h1 className="tw-m-0 tw-text-white tw-text-xl sm:tw-text-2xl md:tw-text-2xl tw-font-semibold">
-                  Withdraw Earning Stake USDT
+                  Withdraw Exor on your Staked USDT
                 </h1>
               </div>
-              <div className="tw-w-full sm:tw-w-5/12 tw-flex tw-justify-end">
+              {/* <div className="tw-w-full sm:tw-w-5/12 tw-flex tw-justify-end">
                 <Button
                   label={"Boost"}
                   rIcons={
@@ -245,7 +245,7 @@ const ROI = (props) => {
                     "tw-border tw-bg-transparent  tw-text-primary tw-rounded-md tw-border-primary tw-text-sm xs:tw-text-base tw-py-2 tw-px-3"
                   }
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="tw-border-t tw-border-b tw-border-white tw-py-4">
