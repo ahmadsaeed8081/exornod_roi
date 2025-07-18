@@ -295,6 +295,7 @@ const InvestmentHistory = (props) => {
                   <Counter double_roi={inv.principle_return} time={(Number(inv.DepositTime)+864000)}/>
 
                   </td>
+                  
                   {/* <td className="tw-p-2">{inv.totalEarned}</td> */}
                 </tr>
               ))}
