@@ -62,7 +62,7 @@ const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking})
           {levels.map((item, index) => (
             <div key={index} className="tw-px-3">
               <div className=" tw-bg-lightBlue tw-rounded-xl tw-p-6 tw-relative tw-text-white tw-shadow-md">
-             { !Level_locking?(
+             { Level_locking?(
                 <div className="tw-absolute tw-top-4 tw-right-4 tw-p-2 tw-rounded-full">
                 <img src={require('../../assets/images/lock.png')} className=" tw-w-9" alt="" />
                </div>

@@ -71,9 +71,10 @@ const StakeComponent = (props) => {
                   Current Balance
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.availBalance)/10**6}
+                  {(Number(props.availBalance)/10**6)/Number(props.exorUsdPrice)}
                   
                 </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
               </div>
             </div>
             <div className=" col-md-6">
@@ -82,9 +83,11 @@ const StakeComponent = (props) => {
                   Total Investment
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.totlaInvestment)/10**6}
+                  {(Number(props.totlaInvestment)/10**6) } 
                   
                 </span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
+
               </div>
             </div>
             <div className=" col-md-6">
@@ -93,9 +96,11 @@ const StakeComponent = (props) => {
                   Total Withdraw
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.total_withdraw_reward)/10**6}
+                {(Number(props.total_withdraw_reward)/10**6)/Number(props.exorUsdPrice)} 
                 
                 </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+
               </div>
             </div>
             <div className=" col-md-6">
@@ -107,6 +112,7 @@ const StakeComponent = (props) => {
                   {Number(props.directs)}
                   
                 </span>
+
               </div>
             </div>
             <div className=" col-md-6">
@@ -122,9 +128,11 @@ const StakeComponent = (props) => {
                   />
                 </div>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.MatchingEarning)/10**6}
+                  {(Number(props.MatchingEarning)/10**6)/Number(props.exorUsdPrice)} 
                   
                 </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+
               </div>
             </div>
             <div className=" col-md-6">
@@ -133,8 +141,10 @@ const StakeComponent = (props) => {
                   Direct Earnings
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.totalReferralsEarning)/10**6}
+                  {(Number(props.totalReferralsEarning)/10**6)/Number(props.exorUsdPrice)} 
                 </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+
               </div>
             </div>
             <div className=" col-md-12">

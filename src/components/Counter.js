@@ -32,7 +32,11 @@ const Counter = (props) => {
   return (
     <div className=" tw-pt-2.5 tw-flex  tw-justify-left tw-gap-2  ">
     <div className=" tw-flex tw-gap-1">
-    <p className=" tw-m-0 tw-text-sm tw-text-white">{String(timeLeft.days).padStart(2, '0')}D : {String(timeLeft.hours).padStart(2, '0')}H : {String(timeLeft.minutes).padStart(2, '0')}M : {String(timeLeft.seconds).padStart(2, '0')}S</p>
+        {!props.double_roi?
+        (
+            <p className=" tw-m-0 tw-text-sm tw-text-white">{String(timeLeft.days).padStart(2, '0')}D : {String(timeLeft.hours).padStart(2, '0')}H : {String(timeLeft.minutes).padStart(2, '0')}M : {String(timeLeft.seconds).padStart(2, '0')}S</p>
+
+        ):("Activate")}
 
       {/* <div className="  tw-gap-1   tw-w-10   tw-rounded-sm tw-flex tw-items-center tw-bg-button-gradient">
       </div> */}
