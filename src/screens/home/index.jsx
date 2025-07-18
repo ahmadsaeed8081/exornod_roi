@@ -98,6 +98,7 @@ const Home = () => {
   
   const [directs_members, set_directs_members] = useState([]);
   const [Level_locking, set_Level_locking] = useState([]);
+  const [exorUsdPrice, set_exorUsdPrice] = useState();
 
   
 
@@ -269,9 +270,10 @@ async function stake1() {
       let usdt_balance = await contract_usdt.methods.balanceOf(address).call();
       let arr;
 
-   arr= await contract.methods.get_totalEarning(address).call();
+      arr= await contract.methods.get_totalEarning(address).call();
+      let exorUsdPrice= await contract.methods.exorUsdPrice(address).call();
 
-   let directs_members= await contract.methods.ReferralsList().call({from : address.toString()});
+      let directs_members= await contract.methods.ReferralsList().call({from : address.toString()});
 
       let Level_count = await contract.methods.Level_count(address).call();
 
@@ -318,7 +320,7 @@ async function stake1() {
       set_RoiEarning(Number(arr.roi_earning))
       set_todayEarning(Number(arr.today_earning))
       set_MatchingEarning(Number(arr.matching_ear))
-
+      set_exorUsdPrice(exorUsdPrice)
       set_team(team)
       set_refCount(Level_count);
 
@@ -437,7 +439,7 @@ async function stake1() {
   return (
     <div className=' tw-overflow-x-hidden'>
       <Hero />
-      <StakeComponent maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
+      <StakeComponent exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />

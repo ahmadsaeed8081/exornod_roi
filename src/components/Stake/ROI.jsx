@@ -199,7 +199,6 @@ const ROI = (props) => {
                   value={props.investment}
                   onChange={(e) => {
                     props.setInvestment(e.target.value);
-                    set_ROI(find_Roi(e.target.value));
                     set_Expected_return(find_Exp_earn(e.target.value));
                   }}
                   placeholder="0"
