@@ -1,6 +1,6 @@
 
 export const USDT_address="0x8E4D719c0fae5eaCB617aE99E4738B8082E44ff4"
-export const cont_address="0x8a258e84B589EB6a70b0cce8Ad8191A0153Ec18f";
+export const cont_address="0x72DeCaAfF3A6F34259B88039B19bdC69ed4d0c33";
 export const cont_abi=[
 	{
 		"inputs": [
@@ -122,7 +122,7 @@ export const cont_abi=[
 				"type": "uint256"
 			}
 		],
-		"name": "withdrawFunds",
+		"name": "withdrawEXOR",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -136,6 +136,19 @@ export const cont_abi=[
 			}
 		],
 		"name": "withdrawReward",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawUSDT",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
