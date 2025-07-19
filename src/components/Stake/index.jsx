@@ -12,7 +12,7 @@ import {
 } from "react-copy-to-clipboard";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Web3 from "web3";
 
 const StakeComponent = (props) => {
   const [tabs, setTabs] = useState("staking");
