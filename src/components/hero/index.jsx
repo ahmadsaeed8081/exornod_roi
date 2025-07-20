@@ -3,7 +3,22 @@ import Button from "../Button";
 import Header from "../header";
 import { Link } from "react-router-dom";
 import { RiArrowRightFill } from "react-icons/ri";
-const Hero = () => {
+const Hero = (props) => {
+
+  const teamMembers = [
+  {
+    name: Number(props.totalusers),
+    role: "Total Users",
+  },
+  {
+    name: Number(props.totalbusiness),
+    role: "Total Investment",
+  },
+  {
+    name:Number(props.total_withdraw),
+    role: "Total Withdraw",
+  },
+];
   return (
     <div className="   tw-bg-cover tw-relative tw-bg-center tw-w-full tw-h-auto">
       <Header />
@@ -70,19 +85,6 @@ const Hero = () => {
   );
 };
 
-const teamMembers = [
-  {
-    name: "0.0",
-    role: "Total Users",
-  },
-  {
-    name: "0.0",
-    role: "Total Investment",
-  },
-  {
-    name: "0.0",
-    role: "Total Withdraw",
-  },
-];
+
 
 export default Hero;

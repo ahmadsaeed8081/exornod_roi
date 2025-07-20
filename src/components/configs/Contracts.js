@@ -1,6 +1,6 @@
 
 export const USDT_address="0x8E4D719c0fae5eaCB617aE99E4738B8082E44ff4"
-export const cont_address="0x72DeCaAfF3A6F34259B88039B19bdC69ed4d0c33";
+export const cont_address="0x463ded2Bd1217eD85dF896d725a34457a2225D15";
 export const cont_abi=[
 	{
 		"inputs": [
@@ -602,6 +602,19 @@ export const cont_abi=[
 	{
 		"inputs": [],
 		"name": "time_divider",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "total_withdraw",
 		"outputs": [
 			{
 				"internalType": "uint256",

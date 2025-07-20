@@ -88,8 +88,13 @@ const Home = () => {
   const [Allinvestment, set_Allinvestment] = useState([]);
   const [withdrawList, setwithdrawList] = useState([]);
   const [availBalance, set_availBalance] = useState(0);
+  
+  const [totalusers, set_totalusers] = useState("0");
 
   const [totalbusiness, setbusiness] = useState("0");
+  
+  const [total_withdraw, set_total_withdraw] = useState("0");
+
   const [totalReferralsEarning, settotalReferralsEarning] = useState(0);
 
   const [referral, setReferral] = useState("0x0000000000000000000000000000000000000000");
@@ -278,8 +283,11 @@ async function stake1() {
       let Level_count = await contract.methods.Level_count(address).call();
 
       let Level_locking = await contract.methods.Level_locking(address).call();
-
+      
       const business = await contract.methods.totalbusiness().call();
+      const totalusers = await contract.methods.totalusers().call();
+      const total_withdraw = await contract.methods.total_withdraw().call();
+
       const user = await contract.methods.user(address).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
 
@@ -311,6 +319,8 @@ async function stake1() {
       set_maximum_investment(maximum_investment);
       set_total_withdraw_reward(user.totalWithdraw_reward);
       setbusiness(business);
+      set_totalusers(totalusers)
+      set_total_withdraw(total_withdraw)
       settotalReferralsEarning(user[7])
       set_directs(user[6])
       set_upline(user.upline)
@@ -438,7 +448,7 @@ async function stake1() {
 
   return (
     <div className=' tw-overflow-x-hidden'>
-      <Hero />
+      <Hero total_withdraw={total_withdraw} totalusers={totalusers} totalbusiness={totalbusiness} />
       <StakeComponent exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}

@@ -254,7 +254,8 @@ const ROI = (props) => {
                   Balance After Withdraw
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  0
+                {((Number(props.availBalance)/10**6) - (Number(props.total_withdraw_reaward)/10**6))/Number(props.exorUsdPrice)}
+
                 </p>
               </div>
               <div className="tw-flex tw-justify-between tw-items-center">
@@ -262,7 +263,8 @@ const ROI = (props) => {
                   Total Withdraw
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  0 USDT
+                  
+                  {Number(props.total_withdraw_reaward)/10**6}
                 </p>
               </div>
             </div>
