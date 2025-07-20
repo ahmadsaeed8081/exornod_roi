@@ -331,7 +331,7 @@ async function stake1() {
       set_totalEarning(Number(arr.total_earning))
       set_levelEarning(arr.levelEarning);
       set_RoiEarning(Number(arr.roi_earning))
-      set_todayEarning(Number(arr.today_earning))
+      set_todayEarning(Number(arr.direct_earning))
       set_MatchingEarning(Number(arr.matching_ear))
       set_exorUsdPrice(Number(exorUsdPrice)/10**6)
       set_team(team)

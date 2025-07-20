@@ -147,7 +147,7 @@ const StakeComponent = (props) => {
                   Direct Earnings
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.totalReferralsEarning)>0?(Number(props.totalReferralsEarning)/10**6)/Number(props.exorUsdPrice):0} 
+                  {Number(props.todayEarning)>0?(Number(props.todayEarning)/10**6)/Number(props.exorUsdPrice):0} 
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
 
