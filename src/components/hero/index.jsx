@@ -7,7 +7,7 @@ const Hero = (props) => {
 
   const teamMembers = [
   {
-    name: Number(props.totalusers)/10**6,
+    name: Number(props.totalusers),
     role: "Total Users",
   },
   {

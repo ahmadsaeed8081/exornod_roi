@@ -367,11 +367,11 @@ async function stake1() {
       return
     }
     if (investment < (Number(minimum_investment)/10**6)) {
-      alert("You can't invest less than "+ Number(minimum_investment)/10**6+"USDT");
+      alert("You can't invest less than "+ Number(minimum_investment)/10**6+" USDT");
       return
     }
     if (investment >( Number(maximum_investment)/10**6)) {
-      alert("You can't invest more than "+ Number(minimum_investment)/10**6+"USDT");
+      alert("You can't invest more than "+ Number(maximum_investment)/10**6+" USDT");
       return
     }
     if (Number(usdt_balance) < Number(investment)*10**6) {
