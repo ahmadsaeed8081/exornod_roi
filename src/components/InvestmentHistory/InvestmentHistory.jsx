@@ -238,7 +238,7 @@ const InvestmentHistory = (props) => {
         </div>
         <div className="tw-relative group tw-cursor-pointer">
           <Tooltip id="tooltip-5direct" place="bottom">
-            Referring 5 people lets you withdraw your principal amount.
+            Referring 7 people lets you get your principal amount back.
           </Tooltip>
         </div>
       </div>

@@ -2,13 +2,17 @@
 import React from "react";
 
 const teamData = [
-  { number: 1, bonus: "$45k"},
-  { number: 2, bonus: "$90k",},
-  { number: 3, bonus: "$180k", },
-  { number: 4, bonus: "$300k",},
-  { number: 5, bonus: "$3M",  },
+  { number: 1,amount:"$2500" ,bonus: "$150"},
+  { number: 2, amount:"$6000" ,bonus: "$250",},
+  { number: 3, amount:"$10000" ,bonus: "$500", },
+  { number: 4, amount:"$25000" ,bonus: "$1000",},
+  { number: 5, amount:"$50000" ,bonus: "$2000",  },
+  { number: 6,amount:"$125000" ,bonus: "$3000"},
+  { number: 7, amount:"$250000" ,bonus: "$6000",},
+  { number: 8, amount:"$500000" ,bonus: "$12000", },
+  { number: 9, amount:"$1100000" ,bonus: "$25000",},
+  { number: 10, amount:"$2500000" ,bonus: "$50000",  },
 ];
-
 
 
 const LeaderShipModal= ({ isOpen, onClose }) => {
@@ -23,8 +27,9 @@ const LeaderShipModal= ({ isOpen, onClose }) => {
         </div>
 
         <div className="tw-mt-3">
-          <div className="tw-grid tw-rounded-md  tw-py-2 tw-grid-cols-2 tw-text-center tw-text-sm tw-font-medium tw-bg-primary tw-text-black tw-rounded-t-md tw-py-1">
+          <div className="tw-grid tw-rounded-md  tw-py-2 tw-grid-cols-3 tw-text-center tw-text-sm tw-font-medium tw-bg-primary tw-text-black tw-rounded-t-md tw-py-1">
             <div>Rank</div>
+            <div>Amount</div>
             <div>Bonus</div>
             
           </div>
@@ -32,9 +37,11 @@ const LeaderShipModal= ({ isOpen, onClose }) => {
             {teamData.map((member, index) => (
               <div
                 key={index}
-                className="tw-grid tw-grid-cols-2  tw-border-b tw-text-center tw-text-sm tw-py-2 border-b tw-border-gray-700 last:tw-border-b-0 hover:tw-bg-primary hover:tw-text-black"
+                className="tw-grid tw-grid-cols-3  tw-border-b tw-text-center tw-text-sm tw-py-2 border-b tw-border-gray-700 last:tw-border-b-0 hover:tw-bg-primary hover:tw-text-black"
               >
                 <div>{member.number}</div>
+                <div>{member.amount}</div>
+
                 <div>{member.bonus}</div>
               </div>
             ))}

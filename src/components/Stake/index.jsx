@@ -47,6 +47,12 @@ const StakeComponent = (props) => {
                     className=" tw-border tw-border-primary tw-rounded-full"
                     alt=""
                   />
+                  
+                  <div className="   tw-flex tw-gap-1 tw-bg-primary tw-absolute tw-bottom-0 tw-w-full tw-rounded-full tw-px-2  tw-py-1"> 
+
+                      <span  className=" tw-text-yellow tw-items-center " >{props.rank>0?"A"+props.rank:""} </span>
+                      </div>
+
                 </div>
                 <div>
                   <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-items-center">
@@ -71,7 +77,7 @@ const StakeComponent = (props) => {
                   Current Balance
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {(Number(props.availBalance)/10**6)/Number(props.exorUsdPrice)}
+                  {Number(props.availBalance)>0?(Number(props.availBalance)/10**6)/Number(props.exorUsdPrice):0}
                   
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
@@ -96,7 +102,7 @@ const StakeComponent = (props) => {
                   Total Withdraw
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {(Number(props.total_withdraw_reward)/10**6)/Number(props.exorUsdPrice)} 
+                {Number(props.total_withdraw_reward)>0?(Number(props.total_withdraw_reward)/10**6)/Number(props.exorUsdPrice):0} 
                 
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
@@ -128,7 +134,7 @@ const StakeComponent = (props) => {
                   />
                 </div>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {(Number(props.MatchingEarning)/10**6)/Number(props.exorUsdPrice)} 
+                  {Number(props.MatchingEarning)>0?(Number(props.MatchingEarning)/10**6)/Number(props.exorUsdPrice):0} 
                   
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
@@ -141,7 +147,7 @@ const StakeComponent = (props) => {
                   Direct Earnings
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {(Number(props.totalReferralsEarning)/10**6)/Number(props.exorUsdPrice)} 
+                  {Number(props.totalReferralsEarning)>0?(Number(props.totalReferralsEarning)/10**6)/Number(props.exorUsdPrice):0} 
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
 

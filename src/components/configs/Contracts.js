@@ -1,6 +1,6 @@
 
 export const USDT_address="0x8E4D719c0fae5eaCB617aE99E4738B8082E44ff4"
-export const cont_address="0x463ded2Bd1217eD85dF896d725a34457a2225D15";
+export const cont_address="0xbF6Ee6fca5eE7830550b8F4cFc97f653Cb8B6e69";
 export const cont_abi=[
 	{
 		"inputs": [
@@ -309,6 +309,25 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "add",
+				"type": "address"
+			}
+		],
+		"name": "get_rank",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "rank",
 				"type": "uint256"
 			}
 		],

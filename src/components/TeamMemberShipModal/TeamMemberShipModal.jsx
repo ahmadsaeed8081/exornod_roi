@@ -25,7 +25,7 @@ const TeamMemberShipModal= ({ isOpen, onClose,directs_members }) => {
             <div>Investment</div>
           </div>
           <div className=" tw-bg-[#101010] tw-mt-3 tw-rounded-lg">
-            {directs_members.members.map((member, index) => (
+            {directs_members.length>0? directs_members.members.map((member, index) => (
               <div
                 key={index}
                 className="tw-grid tw-grid-cols-3  tw-border-b tw-text-center tw-text-sm tw-py-2 border-b tw-border-gray-700 last:tw-border-b-0 hover:tw-bg-primary hover:tw-text-black"
@@ -34,7 +34,7 @@ const TeamMemberShipModal= ({ isOpen, onClose,directs_members }) => {
                 <div>{directs_members ?directs_members.members[index].slice(0,4)+"..."+directs_members.members[index].slice(39,42):""}</div>
                 <div>{directs_members ?Number(directs_members.income[index])/10**6+" USDT":""}</div>
               </div>
-            ))}
+            )):""}
           </div>
         </div>
 
