@@ -103,7 +103,7 @@ const Home = () => {
   
   const [directs_members, set_directs_members] = useState([]);
   const [Level_locking, set_Level_locking] = useState([]);
-  const [exorUsdPrice, set_exorUsdPrice] = useState();
+  const [exorUsdPrice, set_exorUsdPrice] = useState(0);
   const [rank, set_rank] = useState(0);
 
   
@@ -200,7 +200,7 @@ async function stake1() {
           address: cont_address,
           functionName: "withdrawReward", 
           args: [
-            (Number(withdraw_Amount) * exorUsdPrice) * 10**6
+            Number(withdraw_Amount)  * 10**6
           ],
   
         });
@@ -277,8 +277,7 @@ async function stake1() {
       let arr;
 
       arr= await contract.methods.get_totalEarning(address).call();
-      let exorUsdPrice= await contract.methods.exorUsdPrice(address).call();
-
+      let exorUsdPrice= await contract.methods.exorUsdPrice().call();
       let directs_members= await contract.methods.ReferralsList().call({from : address.toString()});
 
       let Level_count = await contract.methods.Level_count(address).call();

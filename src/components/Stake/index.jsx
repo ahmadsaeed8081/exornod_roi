@@ -34,7 +34,7 @@ const StakeComponent = (props) => {
       <div className="row    g-5">
         <div className="col-lg-6">
           <div className=" row">
-            <ROI totalReferralsEarning={props.totalReferralsEarning} maximum_investment={props.maximum_investment} withdrawFee={props.withdrawFee} set_withdraw_Amount={props.set_withdraw_Amount} availBalance={props.availBalance} withdraw_Amount={props.withdraw_Amount} setInvestment={props.setInvestment}  minimum_investment={props.minimum_investment} Invest={props.Invest}  total_withdraw_reaward={props.total_withdraw_reaward} WithdrawReward={props.WithdrawReward} investment={props.investment} address={props.address}/>
+            <ROI total_withdraw_reward={props.total_withdraw_reward}exorUsdPrice={props.exorUsdPrice} totalReferralsEarning={props.totalReferralsEarning} maximum_investment={props.maximum_investment} withdrawFee={props.withdrawFee} set_withdraw_Amount={props.set_withdraw_Amount} availBalance={props.availBalance} withdraw_Amount={props.withdraw_Amount} setInvestment={props.setInvestment}  minimum_investment={props.minimum_investment} Invest={props.Invest}  total_withdraw_reaward={props.total_withdraw_reaward} WithdrawReward={props.WithdrawReward} investment={props.investment} address={props.address}/>
           </div>
         </div>
         <div className="col-lg-6">

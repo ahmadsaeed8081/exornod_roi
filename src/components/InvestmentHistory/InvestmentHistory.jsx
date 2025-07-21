@@ -288,11 +288,15 @@ const InvestmentHistory = (props) => {
                       : inv.doubleROI}
                   </td> */}
                   <td className="tw-p-2">
-                      <Counter double_roi={inv.double_roi} time={(Number(inv.DepositTime)+259200)}/>
+                  <Counter double_roi={inv.double_roi} time={(Number(inv.DepositTime)+1800)}/>
+
+                      {/* <Counter double_roi={inv.double_roi} time={(Number(inv.DepositTime)+259200)}/> */}
                   </td> 
                   
                   <td className="tw-p-2">
-                  <Counter double_roi={inv.principle_return} time={(Number(inv.DepositTime)+864000)}/>
+                  <Counter double_roi={inv.principle_return} time={(Number(inv.DepositTime)+6000)}/>
+
+                  {/* <Counter double_roi={inv.principle_return} time={(Number(inv.DepositTime)+864000)}/> */}
 
                   </td>
                   

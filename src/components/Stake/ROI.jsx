@@ -7,6 +7,7 @@ const ROI = (props) => {
   const [ROI, set_ROI] = useState(0);
   const [Expected_return, set_Expected_return] = useState(0);
   const [withdrawFee, set_withdrawFee] = useState(0);
+  const [afterWithdraw, set_afterWithdrawFee] = useState(0);
 
 
 
@@ -116,18 +117,17 @@ const ROI = (props) => {
 
   }
 
-  function find_Roi(amount) {
-    if (Number(amount) >= Number(props.minimum_investment) && amount < 100) {
-      // alert("amount "+ amount+"   "+"minim "+ minimum_investment)
-      return  1.2;
-    } else if (amount >= 100 && amount < 1000) {
-      return 1.2 ;
-    } else if (amount >= 1000 && amount < 10000) {
-      return 1.2;
-    } else if (amount >= 10000) {
-      return 1.2 ;
+  function find_afterWithdraw(amount) 
+  {
+
+    if ((Number(props.availBalance)/10**6)/Number(props.exorUsdPrice) >= amount) {
+      set_afterWithdrawFee(((Number(props.availBalance)/10**6)/Number(props.exorUsdPrice))-amount);
+    } else
+    {
+      set_afterWithdrawFee( 0);
+
     }
-    return 0;
+    
   }
 
 
@@ -254,8 +254,7 @@ const ROI = (props) => {
                   Balance After Withdraw
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                {((Number(props.availBalance)/10**6) - (Number(props.total_withdraw_reaward)/10**6))/Number(props.exorUsdPrice)}
-
+                  {Number(afterWithdraw)}
                 </p>
               </div>
               <div className="tw-flex tw-justify-between tw-items-center">
@@ -264,7 +263,7 @@ const ROI = (props) => {
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
                   
-                  {Number(props.total_withdraw_reaward)/10**6}
+                  {Number(props.total_withdraw_reward)/10**6}
                 </p>
               </div>
             </div>
@@ -282,6 +281,7 @@ const ROI = (props) => {
                       onChange={(e) => {
                         props.set_withdraw_Amount(e.target.value);
                         set_withdrawFee((Number(e.target.value) * Number(props.withdrawFee))/100);
+                        find_afterWithdraw(e.target.value)
 
                       }}
                 />
