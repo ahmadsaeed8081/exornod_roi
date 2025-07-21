@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TeamMemberShipModal from "../TeamMemberShipModal/TeamMemberShipModal";
 
-const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking}) => {
+const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking,exorUsdPrice}) => {
 
    const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -78,7 +78,7 @@ const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking})
                     <span className="tw-flex tw-items-center">
                       Earning
                     </span>
-                    <span className=" tw-flex tw-gap-1"> <img  src={require('../../assets/images/t_icon.png')}  className=" tw-w-6" alt="" /> {levelEarning[index]?Number(levelEarning[index])/10**6:0}</span>
+                    <span className=" tw-flex tw-gap-1"> <img  src={require('../../assets/images/logo1.png')}  className=" tw-w-6" alt="" /> {levelEarning[index]?(Number(levelEarning[index])/10**6)/exorUsdPrice:0}</span>
                   </div>
                   <div className="tw-flex tw-justify-between">
                     <span className="tw-flex tw-items-center">

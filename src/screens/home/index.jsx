@@ -457,7 +457,7 @@ async function stake1() {
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />
      
-      <ReferralRewards Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
+      <ReferralRewards exorUsdPrice={exorUsdPrice} Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
       
       <Footer/>
       {loader && <Loader />}
