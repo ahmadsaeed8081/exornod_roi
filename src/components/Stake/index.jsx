@@ -50,7 +50,7 @@ const StakeComponent = (props) => {
                   
                   <div className="   tw-flex tw-gap-1 tw-bg-primary tw-absolute tw-bottom-0 tw-w-full tw-rounded-full tw-px-2  tw-py-1"> 
 
-                      <span  className=" tw-text-yellow tw-items-center " >{props.rank>0?"A"+props.rank:""} </span>
+                      <span  className=" tw-text-black tw-items-center " >{props.rank>0?"Rank A"+props.rank:"Rank A0"} </span>
                       </div>
 
                 </div>

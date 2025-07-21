@@ -200,7 +200,7 @@ async function stake1() {
           address: cont_address,
           functionName: "withdrawReward", 
           args: [
-            Number(withdraw_Amount)  * 10**6
+            (Number(withdraw_Amount)  * Number(exorUsdPrice))*10**6
           ],
   
         });

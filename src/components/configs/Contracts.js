@@ -1,6 +1,6 @@
 
 export const USDT_address="0x8E4D719c0fae5eaCB617aE99E4738B8082E44ff4"
-export const cont_address="0x0968fB80c5C9Bda6737E7F9A7C444892D4aA3a01";
+export const cont_address="0x69b571Fd8E6c5EAE4C374d13BbF7C46cF410618c";
 export const cont_abi=[
 	{
 		"inputs": [
