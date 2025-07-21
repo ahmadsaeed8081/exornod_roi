@@ -12,7 +12,7 @@ const Hero = (props) => {
   },
   {
     name: Number(props.totalbusiness)/10**6,
-    role: "Total Investment",
+    role: "Total Business",
   },
   {
     name:Number(props.total_withdraw)/10**6,
