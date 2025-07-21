@@ -157,7 +157,7 @@ const StakeComponent = (props) => {
             <div className=" col-md-12">
             <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-justify-between tw-items-center">
-                Total Priciple Return
+                Fast Track Bonus
 
                 </h6>
                 <span className=" tw-font-inter tw-text-white  tw-text-2xl">
