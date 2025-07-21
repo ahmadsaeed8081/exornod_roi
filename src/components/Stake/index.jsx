@@ -89,7 +89,7 @@ const StakeComponent = (props) => {
                   Total Investment
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {(Number(props.totlaInvestment)/10**6) } 
+                  {(Number(props.totlaInvestment)/10**6) }  
                   
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> usdt</span>
@@ -152,9 +152,22 @@ const StakeComponent = (props) => {
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
 
               </div>
+
             </div>
             <div className=" col-md-12">
-              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+            <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-justify-between tw-items-center">
+                Total Priciple Return
+
+                </h6>
+                <span className=" tw-font-inter tw-text-white  tw-text-2xl">
+                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6)/Number(props.exorUsdPrice):0} 
+
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+
+              </div>
+              <div className=" tw-border  tw-border-textColor tw-mt-5  tw-rounded-3xl  p-4">
                 <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-justify-between tw-items-center">
                 Invite Link
                 <CopyToClipboard
@@ -168,6 +181,7 @@ const StakeComponent = (props) => {
                 {window.location.host}/?ref={props.address?props.address.slice(0,4)+"..."+props.address.slice(39,42):"kindly connect"}
                 </span>
               </div>
+
             </div>
           </div>
         </div>

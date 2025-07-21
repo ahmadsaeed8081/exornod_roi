@@ -105,8 +105,8 @@ const Home = () => {
   const [Level_locking, set_Level_locking] = useState([]);
   const [exorUsdPrice, set_exorUsdPrice] = useState(0);
   const [rank, set_rank] = useState(0);
+  const [total_principle_return    ,   set_total_principle_return] = useState(0);
 
-  
 
   const [state, setState] = useState({
     days: 0,
@@ -326,6 +326,7 @@ async function stake1() {
       settotalReferralsEarning(user[7])
       set_directs(user[6])
       set_upline(user.upline)
+      set_total_principle_return(Number(user.total_principle_return))
       set_Level_locking(Level_locking)
       set_totalEarning(Number(arr.total_earning))
       set_levelEarning(arr.levelEarning);
@@ -451,7 +452,7 @@ async function stake1() {
   return (
     <div className=' tw-overflow-x-hidden'>
       <Hero  total_withdraw={total_withdraw} totalusers={totalusers} totalbusiness={totalbusiness} />
-      <StakeComponent rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
+      <StakeComponent total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />

@@ -281,7 +281,7 @@ const InvestmentHistory = (props) => {
                   <td className="tw-p-2 tw-whitespace-nowrap">{Number(inv.investmentNum)+1}</td>
                   <td className="tw-p-2 tw-whitespace-nowrap">{Number(inv.investedAmount)/10**6} USDT</td>
                   <td className="tw-p-2 tw-whitespace-nowrap">{count(Number(inv.DepositTime))}</td>
-                  <td className="tw-p-2 tw-whitespace-nowrap">{Number(inv.roi_percentage)/10**6}%</td>
+                  <td className="tw-p-2 tw-whitespace-nowrap">{(Number(inv.roi_percentage)/10**6)}%{(Number(inv.roi_percentage)/10**6)==1?("(4x)"):("(2x)")}</td>
                   {/* <td className="tw-p-2">
                     {timers[i] && timers[i].doubleROI !== null
                       ? formatTime(timers[i].doubleROI)
