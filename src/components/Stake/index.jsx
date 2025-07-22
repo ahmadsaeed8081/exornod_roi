@@ -74,6 +74,18 @@ const StakeComponent = (props) => {
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
+                  Total Income
+                </h6>
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                  {Number(props.totalEarning)>0?(Number(props.totalEarning)/10**6)/Number(props.exorUsdPrice):0}
+                  
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+              </div>
+            </div>
+            <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
                   Current Balance
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
@@ -122,6 +134,19 @@ const StakeComponent = (props) => {
               </div>
             </div>
             <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
+                  Direct Earnings
+                </h6>
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                  {Number(props.todayEarning)>0?(Number(props.todayEarning)/10**6)/Number(props.exorUsdPrice):0} 
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> exor</span>
+
+              </div>
+
+            </div>
+            <div className=" col-md-6">
               <div className=" tw-border  tw-cursor-pointer tw-border-textColor   tw-rounded-3xl  p-4">
                 <div className=" tw-flex tw-justify-between tw-items-center">
                   <h6 className="   tw-text-white  tw-font-inter ">
@@ -141,13 +166,14 @@ const StakeComponent = (props) => {
 
               </div>
             </div>
+
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
-                  Direct Earnings
+                Fast Track Bonus
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.todayEarning)>0?(Number(props.todayEarning)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6)/Number(props.exorUsdPrice):0} 
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
 
@@ -155,7 +181,7 @@ const StakeComponent = (props) => {
 
             </div>
             <div className=" col-md-12">
-            <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+            {/* <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-justify-between tw-items-center">
                 Fast Track Bonus
 
@@ -166,7 +192,7 @@ const StakeComponent = (props) => {
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> exor</span>
 
-              </div>
+              </div> */}
               <div className=" tw-border  tw-border-textColor tw-mt-5  tw-rounded-3xl  p-4">
                 <h6 className="  tw-text-white  tw-font-poppins tw-flex tw-gap-3  tw-justify-between tw-items-center">
                 Invite Link

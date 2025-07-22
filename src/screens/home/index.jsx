@@ -317,6 +317,7 @@ async function stake1() {
       setTotalInvestment(user[2])
       set_curr_time(curr_time);
       set_availBalance((Number(arr.total_earning)) - (Number(user.totalWithdraw_reward)));
+      // set_totalEarning(Number(arr.total_earning));
       set_minimum_investment(minimum_investment);
       set_maximum_investment(maximum_investment);
       set_total_withdraw_reward(user.totalWithdraw_reward);
