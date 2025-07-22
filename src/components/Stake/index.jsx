@@ -86,7 +86,7 @@ const StakeComponent = (props) => {
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
-                  Total Investment
+                  Self Investment
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
                   {(Number(props.totlaInvestment)/10**6) }  
@@ -125,7 +125,7 @@ const StakeComponent = (props) => {
               <div className=" tw-border  tw-cursor-pointer tw-border-textColor   tw-rounded-3xl  p-4">
                 <div className=" tw-flex tw-justify-between tw-items-center">
                   <h6 className="   tw-text-white  tw-font-inter ">
-                    Team Bonus
+                    Team Bonus & Rank Income 
                   </h6>
                   <img
                     onClick={() => setIsModalOpen(true)}

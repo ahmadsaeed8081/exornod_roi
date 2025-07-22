@@ -54,7 +54,7 @@ const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking,e
         <TeamMemberShipModal directs_members ={directs_members} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       <h2 className="tw-text-white tw-pt-4 tw-text-center  tw-font-Dots tw-text-3xl tw-font-normal tw-mb-8">
-         Referral <span className=" tw-text-primary tw-font-Dots">Reward</span>
+         Team Performance <span className=" tw-text-primary tw-font-Dots">Bonus</span>
       </h2>
 
       <div className="tw-container tw-mx-auto">

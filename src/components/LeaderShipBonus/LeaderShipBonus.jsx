@@ -22,7 +22,7 @@ const LeaderShipModal= ({ isOpen, onClose }) => {
     <div className="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-40 tw-flex tw-items-center tw-justify-center tw-z-50">
       <div className=" tw-bg-lightBlue tw-text-white tw-w-[320px] tw-rounded-xl tw-shadow-lg tw-p-4">
         <div className="tw-flex tw-justify-between tw-items-center   tw-pb-2">
-          <h2 className="tw-text-sm tw-font-medium">Leadership Bouns</h2>
+          <h2 className="tw-text-sm tw-font-medium">Team Bouns & Rank Income</h2>
           <button onClick={onClose} className="tw-text-white hover:tw-text-red-500">✕</button>
         </div>
 
