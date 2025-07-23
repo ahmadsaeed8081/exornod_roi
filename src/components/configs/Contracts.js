@@ -1,6 +1,6 @@
 
-export const USDT_address="0x8E4D719c0fae5eaCB617aE99E4738B8082E44ff4"
-export const cont_address="0x69b571Fd8E6c5EAE4C374d13BbF7C46cF410618c";
+export const USDT_address="0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+export const cont_address="0xD5FEe5df0c557507c393bdbF682fcC6ba06b6368";
 export const cont_abi=[
 	{
 		"inputs": [
@@ -37,6 +37,13 @@ export const cont_abi=[
 				"type": "bool"
 			}
 		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "initalized",
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -78,11 +85,6 @@ export const cont_abi=[
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -111,6 +113,19 @@ export const cont_abi=[
 				"type": "bool"
 			}
 		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newCode",
+				"type": "address"
+			}
+		],
+		"name": "updateCode",
+		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -154,25 +169,6 @@ export const cont_abi=[
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "All_investors",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "direct_rew_percentage",
 		"outputs": [
@@ -205,19 +201,6 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "curr_month",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "get_currTime",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -266,25 +249,6 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "roi_earning",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_num",
-				"type": "uint256"
-			}
-		],
-		"name": "get_InvExp_Date",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -556,25 +520,6 @@ export const cont_abi=[
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "levelpercentage",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "maximum_investment",
 		"outputs": [
@@ -598,6 +543,32 @@ export const cont_abi=[
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "proxiableUUID",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -729,87 +700,6 @@ export const cont_abi=[
 				"internalType": "uint256",
 				"name": "total_directIncome",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "add",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "i",
-				"type": "uint256"
-			}
-		],
-		"name": "user_investment",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "investedAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "expire_Time",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "DepositTime",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "investmentNum",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "roi_percentage",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "double_roi",
-						"type": "bool"
-					},
-					{
-						"internalType": "bool",
-						"name": "principle_return",
-						"type": "bool"
-					},
-					{
-						"internalType": "uint256",
-						"name": "double_roi_directs",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "principle_return_directs",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "roi",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "matching_business",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct Exornode_ROI.allInvestments",
-				"name": "",
-				"type": "tuple"
 			}
 		],
 		"stateMutability": "view",
