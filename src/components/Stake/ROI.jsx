@@ -270,13 +270,13 @@ const ROI = (props) => {
 
             <div className="tw-pt-4">
               <label className="tw-text-white tw-text-sm sm:tw-text-base">
-                Withdraw Amount
+                Withdraw Amount (Min : 10$)
               </label>
               <div className="tw-mt-2">
                 <input
                   type="number"
                   className="tw-bg-white tw-outline-none tw-rounded-lg tw-w-full tw-p-2 sm:tw-p-3 tw-text-sm sm:tw-text-base"
-                      placeholder="" 
+                      placeholder="Write Amount Here" 
                       value={props.withdraw_Amount}
                       onChange={(e) => {
                         props.set_withdraw_Amount(e.target.value);

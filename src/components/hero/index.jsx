@@ -5,6 +5,15 @@ import { Link } from "react-router-dom";
 import { RiArrowRightFill } from "react-icons/ri";
 const Hero = (props) => {
 
+
+  const openPdfInNewTab = () => {
+    const pdfUrl = require("../../assets/images/Exornod_plan.pdf");
+    window.open(pdfUrl, "_blank");
+  };
+
+
+
+
   const teamMembers = [
   {
     name: Number(props.totalusers),
@@ -20,7 +29,7 @@ const Hero = (props) => {
   },
 ];
   return (
-    <div className="   tw-bg-cover tw-relative tw-bg-center tw-w-full tw-h-auto">
+    <div className=" tw-mb-10 tw-bg-cover tw-relative tw-bg-center tw-w-full tw-h-auto">
       <Header />
 
       <div className="container tw-mx-auto tw-relative tw-pt-6">
@@ -42,8 +51,9 @@ const Hero = (props) => {
                     <RiArrowRightFill />
 
                   }
+                  onClick={openPdfInNewTab}
                   className={"  tw-text-black  sm:tw-text-base tw-text-xs tw-whitespace-nowrap tw-rounded-md  tw-font-normal"}
-                  label={"Get Started"}
+                  label={"Read Plan"}
                 />
               </div>
              
@@ -60,7 +70,7 @@ const Hero = (props) => {
           </div>
         </div>
 
-        <div className="row ">
+        {/* <div className="row ">
           {teamMembers.map((member, index) => (
             <div key={index} className="col-lg-4 g-4 col-md-6 ">
               <div className="  ">
@@ -75,7 +85,7 @@ const Hero = (props) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       <div className=" tw-absolute -tw-z-10 tw-left-0  tw-top-0">
