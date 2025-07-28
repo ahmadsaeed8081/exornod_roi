@@ -100,7 +100,9 @@ const Home = () => {
   const [referral, setReferral] = useState("0x0000000000000000000000000000000000000000");
   const [upliner, set_upline] = useState();
   const [MatchingEarning, set_MatchingEarning] = useState(0);
-  
+  const [super_leg_bal, set_super_leg_bal] = useState(0);
+  const [other_leg_bal, set_other_leg_bal] = useState(0);
+
   const [directs_members, set_directs_members] = useState([]);
   const [Level_locking, set_Level_locking] = useState([]);
   const [exorUsdPrice, set_exorUsdPrice] = useState(0);
@@ -283,7 +285,9 @@ async function stake1() {
       let Level_count = await contract.methods.Level_count(address).call();
 
       let Level_locking = await contract.methods.Level_locking(address).call();
-      
+      let curr_day = await contract.methods.get_curr_day(address).call();
+      let matching_arr = await contract.methods.get_givenDay_matchingRew(address,Number(curr_day)).call();
+
       const business = await contract.methods.totalbusiness().call();
       const totalusers = await contract.methods.totalusers().call();
       const total_withdraw = await contract.methods.total_withdraw().call();
@@ -336,6 +340,8 @@ async function stake1() {
       set_exorUsdPrice(Number(exorUsdPrice)/10**18)
       set_team(team)
       set_refCount(Level_count);
+      set_super_leg_bal(matching_arr.sl)
+      set_other_leg_bal(matching_arr.ol)
 
       set_Allinvestment(allInvestments)
 
@@ -452,7 +458,7 @@ async function stake1() {
   return (
     <div className=' tw-overflow-x-hidden'>
       <Hero  total_withdraw={total_withdraw} totalusers={totalusers} totalbusiness={totalbusiness} />
-      <StakeComponent total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
+      <StakeComponent other_leg_bal={other_leg_bal}  super_leg_bal={super_leg_bal} total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />
