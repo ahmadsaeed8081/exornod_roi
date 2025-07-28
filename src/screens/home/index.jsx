@@ -277,7 +277,7 @@ async function stake1() {
       let arr;
 
       arr= await contract.methods.get_totalEarning(address).call();
-      let exorUsdPrice= await contract.methods.exorUsdPrice().call();
+      let exorUsdPrice= await contract.methods.get_ExorPriceInUSDT().call();
       let directs_members= await contract.methods.ReferralsList().call({from : address.toString()});
 
       let Level_count = await contract.methods.Level_count(address).call();
@@ -288,6 +288,7 @@ async function stake1() {
       const totalusers = await contract.methods.totalusers().call();
       const total_withdraw = await contract.methods.total_withdraw().call();
       let rank_no = await contract.methods.get_rank(address).call(); 
+
 
       const user = await contract.methods.user(address).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
@@ -332,7 +333,7 @@ async function stake1() {
       set_RoiEarning(Number(arr.roi_earning))
       set_todayEarning(Number(arr.direct_earning))
       set_MatchingEarning(Number(arr.matching_ear))
-      set_exorUsdPrice(Number(exorUsdPrice)/10**6)
+      set_exorUsdPrice(Number(exorUsdPrice)/10**18)
       set_team(team)
       set_refCount(Level_count);
 

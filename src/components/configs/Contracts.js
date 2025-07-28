@@ -208,6 +208,19 @@ export const cont_abi=[
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "get_ExorPriceInUSDT",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "priceInUSDT",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -225,6 +238,16 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "rew",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sl",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ol",
 				"type": "uint256"
 			}
 		],
