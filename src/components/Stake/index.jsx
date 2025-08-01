@@ -56,7 +56,7 @@ const StakeComponent = (props) => {
                   
                   <div className="   tw-flex tw-gap-1 tw-bg-primary tw-absolute tw-bottom-0 tw-w-full tw-rounded-full tw-px-2  tw-py-1"> 
 
-                      <span  className=" tw-text-black tw-items-center " >{props.rank>0?"Rank A"+props.rank:"Rank A0"} </span>
+                      <span  className=" tw-text-black tw-items-center " >{props.rank>0?"Rank "+props.rank:"Rank A0"} </span>
                       </div>
 
                 </div>
@@ -83,10 +83,11 @@ const StakeComponent = (props) => {
                   Total Income
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.totalEarning)>0?(Number(props.totalEarning)/10**6)/Number(props.exorUsdPrice):0}
+                  {Number(props.totalEarning)>0?(Number(props.totalEarning)/10**6):0}
                   
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
+                
               </div>
             </div>
             <div className=" col-md-6">
@@ -95,10 +96,10 @@ const StakeComponent = (props) => {
                   Current Balance
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.availBalance)>0?(Number(props.availBalance)/10**6)/Number(props.exorUsdPrice):0}
+                  {Number(props.availBalance)>0?(Number(props.availBalance)/10**6):0}
                   
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
               </div>
             </div>
             <div className=" col-md-6">
@@ -120,10 +121,10 @@ const StakeComponent = (props) => {
                   Total Withdraw
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.total_withdraw_reward)>0?(Number(props.total_withdraw_reward)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.total_withdraw_reward)>0?(Number(props.total_withdraw_reward)/10**6):0} 
                 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
             </div>
@@ -145,9 +146,9 @@ const StakeComponent = (props) => {
                   Direct Earnings
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.todayEarning)>0?(Number(props.todayEarning)/10**6)/Number(props.exorUsdPrice):0} 
+                  {Number(props.todayEarning)>0?(Number(props.todayEarning)/10**6):0} 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
 
@@ -165,10 +166,10 @@ const StakeComponent = (props) => {
                   />
                 </div>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                  {Number(props.MatchingEarning)>0?(Number(props.MatchingEarning)/10**6)/Number(props.exorUsdPrice):0} 
+                  {Number(props.MatchingEarning)>0?(Number(props.MatchingEarning)/10**6):0} 
                   
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
             </div>
@@ -179,9 +180,9 @@ const StakeComponent = (props) => {
                 Fast Track Bonus
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6):0} 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
 
@@ -193,9 +194,9 @@ const StakeComponent = (props) => {
                 Super Leg Business
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.sp_leg_bal)>0?(Number(props.sp_leg_bal)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.sp_leg_bal)>0?(Number(props.sp_leg_bal)/10**6):0} 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
 
@@ -207,9 +208,9 @@ const StakeComponent = (props) => {
                 Other Legs Business
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.other_leg_bal)>0?(Number(props.other_leg_bal)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.other_leg_bal)>0?(Number(props.other_leg_bal)/10**6):0} 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div>
 
@@ -221,10 +222,10 @@ const StakeComponent = (props) => {
 
                 </h6>
                 <span className=" tw-font-inter tw-text-white  tw-text-2xl">
-                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6)/Number(props.exorUsdPrice):0} 
+                {Number(props.total_principle_return)>0?(Number(props.total_principle_return)/10**6):0} 
 
                 </span>
-                <span className="  tw-text-white  tw-font-sm"> exor</span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
 
               </div> */}
               <div className=" tw-border  tw-border-textColor tw-mt-5  tw-rounded-3xl  p-4">

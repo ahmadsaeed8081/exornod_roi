@@ -120,8 +120,8 @@ const ROI = (props) => {
   function find_afterWithdraw(amount) 
   {
 
-    if ((Number(props.availBalance)/10**6)/Number(props.exorUsdPrice) >= amount) {
-      set_afterWithdrawFee(((Number(props.availBalance)/10**6)/Number(props.exorUsdPrice))-amount);
+    if ((Number(props.availBalance)/10**6) >= amount) {
+      set_afterWithdrawFee(((Number(props.availBalance)/10**6))-amount);
     } else
     {
       set_afterWithdrawFee( 0);
@@ -254,10 +254,18 @@ const ROI = (props) => {
                   Balance After Withdraw
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  {Number(afterWithdraw)}
+                  {Number(afterWithdraw)} USDT
                 </p>
               </div>
-              <div className="tw-flex tw-justify-between tw-items-center">
+              <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
+                <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
+                  Expected Exor
+                </p>
+                <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
+                  {Number(withdrawFee).toFixed(2)} EXOR
+                </p>
+              </div>
+              {/* <div className="tw-flex tw-justify-between tw-items-center">
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
                   Total Withdraw
                 </p>
@@ -265,7 +273,7 @@ const ROI = (props) => {
                   
                   {Number(props.total_withdraw_reward)/10**6}
                 </p>
-              </div>
+              </div> */}
             </div>
 
             <div className="tw-pt-4">
@@ -276,12 +284,12 @@ const ROI = (props) => {
                 <input
                   type="number"
                   className="tw-bg-white tw-outline-none tw-rounded-lg tw-w-full tw-p-2 sm:tw-p-3 tw-text-sm sm:tw-text-base"
-                      placeholder="Write Amount Here" 
+                      placeholder="Write Amount in USD" 
                       value={props.withdraw_Amount}
                       onChange={(e) => {
                         props.set_withdraw_Amount(e.target.value);
-                        set_withdrawFee((Number(e.target.value) * Number(props.withdrawFee))/100);
-                        find_afterWithdraw(e.target.value)
+                        find_afterWithdraw(Number(e.target.value));
+                        set_withdrawFee(Number(e.target.value)/Number(props.exorUsdPrice))
 
                       }}
                 />

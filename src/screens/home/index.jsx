@@ -202,7 +202,7 @@ async function stake1() {
           address: cont_address,
           functionName: "withdrawReward", 
           args: [
-            (Number(withdraw_Amount)  * Number(exorUsdPrice))*10**6
+            (Number(withdraw_Amount)*10**6)
           ],
   
         });
@@ -428,12 +428,11 @@ async function stake1() {
           alert("You don't have earning to withdraw");
           return;
         }
-        if (Number(withdraw_Amount) > (Number(availBalance)/10**6)/Number(exorUsdPrice)) {
+        if (Number(withdraw_Amount) > (Number(availBalance)/10**6)) {
           alert("you cant withdraw more than your current balance");
 
           return;
         }
-
         if (chainId != currentChainId )
           {
             await switchChainAsync({ chainId });
