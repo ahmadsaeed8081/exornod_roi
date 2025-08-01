@@ -78,7 +78,7 @@ const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking,e
                     <span className="tw-flex tw-items-center">
                       Earning
                     </span>
-                    <span className=" tw-flex tw-gap-1"> <img  src={require('../../assets/images/logo1.png')}  className=" tw-w-6" alt="" /> {levelEarning[index]?(Number(levelEarning[index])/10**6)/exorUsdPrice:0}</span>
+                    <span className=" tw-flex tw-gap-1">  {levelEarning[index]?(Number(levelEarning[index])/10**6):0} usdt</span>
                   </div>
                   <div className="tw-flex tw-justify-between">
                     <span className="tw-flex tw-items-center">

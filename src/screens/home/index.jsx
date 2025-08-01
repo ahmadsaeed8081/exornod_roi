@@ -416,10 +416,10 @@ async function stake1() {
           alert("please write amount ");
           return
         }
-        // if (Number(withdraw_Amount) < Number(minWithdraw)/10**18) {
-        //   alert("You can't withdraw less than "+Number(minWithdraw)/10**18);
-        //   return
-        // }
+        if (Number(withdraw_Amount) < 10) {
+          alert("You can't withdraw less than 10$");
+          return
+        }
         // if (Number(withdraw_Amount) > Number(maxWithdraw)/10**18) {
         //   alert("You can't withdraw more than "+Number(maxWithdraw)/10**18);
         //   return
