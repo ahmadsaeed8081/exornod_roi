@@ -259,7 +259,7 @@ const ROI = (props) => {
               </div>
               <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  Curr Exor price
+                  Curr Exor Price
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
                   {Number(props.exorUsdPrice).toFixed(9)} USDT
