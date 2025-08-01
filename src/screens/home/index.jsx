@@ -296,6 +296,7 @@ async function stake1() {
 
       const user = await contract.methods.user(address).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
+      // const allInvestments = await contract.methods.getAllinvestments().call({ from: "0x59979b5b99E2c06e900F21Bf015bAc055bB5DC84" });
 
       let minimum_investment = await contract.methods.minimum_investment().call(); 
       let maximum_investment = await contract.methods.maximum_investment().call(); 
@@ -427,8 +428,9 @@ async function stake1() {
           alert("You don't have earning to withdraw");
           return;
         }
-        if (Number(withdraw_Amount) > Number(availBalance)) {
+        if (Number(withdraw_Amount) > (Number(availBalance)/10**6)/Number(exorUsdPrice)) {
           alert("you cant withdraw more than your current balance");
+
           return;
         }
 
