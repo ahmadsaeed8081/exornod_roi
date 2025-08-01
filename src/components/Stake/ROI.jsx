@@ -254,7 +254,15 @@ const ROI = (props) => {
                   Balance After Withdraw
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  {Number(afterWithdraw)} USDT
+                  {Number(afterWithdraw).toFixed(3)} USDT
+                </p>
+              </div>
+              <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
+                <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
+                  Curr Exor price
+                </p>
+                <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
+                  {Number(props.exorUsdPrice).toFixed(9)} USDT
                 </p>
               </div>
               <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
@@ -262,7 +270,7 @@ const ROI = (props) => {
                   Expected Exor
                 </p>
                 <p className="tw-m-0 tw-text-white tw-text-sm sm:tw-text-base">
-                  {Number(withdrawFee).toFixed(2)} EXOR
+                  {Number(withdrawFee).toFixed(3)} EXOR
                 </p>
               </div>
               {/* <div className="tw-flex tw-justify-between tw-items-center">
