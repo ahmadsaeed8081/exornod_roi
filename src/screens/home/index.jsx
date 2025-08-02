@@ -267,6 +267,7 @@ async function stake1() {
     }
     // try {
       setLoader(true)
+      let address1=address
       let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com"));
 
       const pol_balance = await web3.eth.getBalance(address);
@@ -275,26 +276,28 @@ async function stake1() {
 
       const contract_usdt = new web3.eth.Contract(token_abi, USDT_address);
 
-      let usdt_balance = await contract_usdt.methods.balanceOf(address).call();
+      let usdt_balance = await contract_usdt.methods.balanceOf(address1).call();
       let arr;
+        arr= await contract.methods.get_totalEarning(address1).call();
 
-      arr= await contract.methods.get_totalEarning(address).call();
+      console.log(arr)
+
       let exorUsdPrice= await contract.methods.get_ExorPriceInUSDT().call();
-      let directs_members= await contract.methods.ReferralsList().call({from : address.toString()});
+      let directs_members= await contract.methods.ReferralsList().call({from : address1.toString()});
+console.log(directs_members)
+      let Level_count = await contract.methods.Level_count(address1).call();
 
-      let Level_count = await contract.methods.Level_count(address).call();
-
-      let Level_locking = await contract.methods.Level_locking(address).call();
-      let curr_day = await contract.methods.get_curr_day(address).call();
-      let matching_arr = await contract.methods.get_givenDay_matchingRew(address,Number(curr_day)).call();
+      let Level_locking = await contract.methods.Level_locking(address1).call();
+      let curr_day = await contract.methods.get_curr_day(address1).call();
+      let matching_arr = await contract.methods.get_givenDay_matchingRew(address1,Number(curr_day)).call();
 
       const business = await contract.methods.totalbusiness().call();
       const totalusers = await contract.methods.totalusers().call();
       const total_withdraw = await contract.methods.total_withdraw().call();
-      let rank_no = await contract.methods.get_rank(address).call(); 
+      let rank_no = await contract.methods.get_rank(address1).call(); 
 
 
-      const user = await contract.methods.user(address).call();
+      const user = await contract.methods.user(address1).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
       // const allInvestments = await contract.methods.getAllinvestments().call({ from: "0x59979b5b99E2c06e900F21Bf015bAc055bB5DC84" });
 
@@ -416,10 +419,10 @@ async function stake1() {
           alert("please write amount ");
           return
         }
-        if (Number(withdraw_Amount) < 10) {
-          alert("You can't withdraw less than 10$");
-          return
-        }
+        // if (Number(withdraw_Amount) < 10) {
+        //   alert("You can't withdraw less than 10$");
+        //   return
+        // }
         // if (Number(withdraw_Amount) > Number(maxWithdraw)/10**18) {
         //   alert("You can't withdraw more than "+Number(maxWithdraw)/10**18);
         //   return
