@@ -427,10 +427,10 @@ console.log(directs_members)
         //   alert("You can't withdraw more than "+Number(maxWithdraw)/10**18);
         //   return
         // }
-        if (Number(totalEarning)==0) {
-          alert("You don't have earning to withdraw");
-          return;
-        }
+        // if (Number(totalEarning)==0) {
+        //   alert("You don't have earning to withdraw");
+        //   return;
+        // }
         if (Number(withdraw_Amount) > (Number(availBalance)/10**6)) {
           alert("you cant withdraw more than your current balance");
 
