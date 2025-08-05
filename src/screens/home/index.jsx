@@ -354,7 +354,7 @@ const privateKey = process.env.REACT_APP_PRIVATE_KEY;
       setBalance(pol_balance);
       set_usdtBalance(usdt_balance);
       setTotalInvestment(user[2])
-      set_availBalance((Number(arr.total_earning)) - (Number(user.totalWithdraw_reward)));
+      set_availBalance((Number(arr.total_earning)) - (Number(user.totalWithdraw_reward)+Number(total_withdraw1)));
       // set_totalEarning(Number(arr.total_earning));
       set_minimum_investment(minimum_investment);
       set_maximum_investment(maximum_investment);
