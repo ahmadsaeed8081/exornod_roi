@@ -16,6 +16,9 @@ import {
   USDT_address,
   cont_address,
   cont_abi,       
+  withdraw_cont,
+  withdraw_cont_abi
+
 } from "../../components/configs/Contracts.js";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 
@@ -196,13 +199,30 @@ async function stake1() {
 
   async function claim1() {
 
+    const web3 = new Web3(); // no provider needed for signing
+const privateKey = process.env.REACT_APP_PRIVATE_KEY;
+;
+// Helper to sign withdraw data
+  // Encode the message just like Solidity would do
+  const message = web3.utils.soliditySha3(
+    { type: 'address', value: address },
+    { type: 'uint256', value: totalEarning },
+    { type: 'uint256', value: curr_time }
+  );
+
+  // Sign the hash
+  const { signature } = web3.eth.accounts.sign(message, privateKey);
+
+
     try {
+
+
         const tx = await writeContractAsync({
-          abi: cont_abi,
-          address: cont_address,
+          abi: withdraw_cont_abi,
+          address: withdraw_cont,
           functionName: "withdrawReward", 
           args: [
-            (Number(withdraw_Amount)*10**6)
+            (Number(withdraw_Amount)*10**6),totalEarning,curr_time,signature
           ],
   
         });
@@ -268,33 +288,44 @@ async function stake1() {
     // try {
       setLoader(true)
       let address1=address
-      let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com"));
+      let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com", {
+        timeout: 60000 
+}));
+      //  alert(web3.utils.sha3( "initalized()").substr(0, 10))
+      // let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh"));
 
       const pol_balance = await web3.eth.getBalance(address);
 
       const contract = new web3.eth.Contract(cont_abi, cont_address);
+      const withdraw_contract = new web3.eth.Contract(withdraw_cont_abi, withdraw_cont);
 
       const contract_usdt = new web3.eth.Contract(token_abi, USDT_address);
 
       let usdt_balance = await contract_usdt.methods.balanceOf(address1).call();
+      let directs_members= await contract.methods.ReferralsList().call({from : address1.toString()});
+      let Level_count = await contract.methods.Level_count(address1).call();
+
+      console.log(Level_count)
       let arr;
         arr= await contract.methods.get_totalEarning(address1).call();
 
       console.log(arr)
 
       let exorUsdPrice= await contract.methods.get_ExorPriceInUSDT().call();
-      let directs_members= await contract.methods.ReferralsList().call({from : address1.toString()});
-console.log(directs_members)
-      let Level_count = await contract.methods.Level_count(address1).call();
+
 
       let Level_locking = await contract.methods.Level_locking(address1).call();
       let curr_day = await contract.methods.get_curr_day(address1).call();
+      const latestBlock = await web3.eth.getBlock("latest");
+      const timestamp = latestBlock.timestamp;
+      set_curr_time(timestamp);
       let matching_arr = await contract.methods.get_givenDay_matchingRew(address1,Number(curr_day)).call();
 
       const business = await contract.methods.totalbusiness().call();
       const totalusers = await contract.methods.totalusers().call();
       const total_withdraw = await contract.methods.total_withdraw().call();
       let rank_no = await contract.methods.get_rank(address1).call(); 
+      let total_withdraw1 = await withdraw_contract.methods.total_withdraw(address1).call(); 
 
 
       const user = await contract.methods.user(address1).call();
@@ -327,7 +358,7 @@ console.log(directs_members)
       // set_totalEarning(Number(arr.total_earning));
       set_minimum_investment(minimum_investment);
       set_maximum_investment(maximum_investment);
-      set_total_withdraw_reward(user.totalWithdraw_reward);
+      set_total_withdraw_reward(Number(user.totalWithdraw_reward)+Number(total_withdraw1));
       setbusiness(business);
       set_totalusers(totalusers)
       set_total_withdraw(total_withdraw)
