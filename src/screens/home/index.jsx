@@ -238,7 +238,7 @@ async function stake1() {
     }
     // try {
       setLoader(true)
-      let address1="0xbec8874F8d77fcDFA69678fA810742C5C0F570b7"  
+      let address1=address  
       let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com", {
         timeout: 60000 
 }));
