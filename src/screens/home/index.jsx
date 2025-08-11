@@ -69,6 +69,7 @@ const Home = () => {
   const [totalEarning, set_totalEarning] = useState(0);
   const [levelBusiness, set_levelBusiness] = useState([]);
   const [levelEarning, set_levelEarning] = useState([]);
+  const [Level_rew, set_levelRew] = useState([]);
 
   const [refCount, set_refCount] = useState([]);
 
@@ -107,7 +108,9 @@ const Home = () => {
   const [MatchingEarning, set_MatchingEarning] = useState(0);
   const [super_leg_bal, set_super_leg_bal] = useState(0);
   const [other_leg_bal, set_other_leg_bal] = useState(0);
+  const [totalEarned, set_totalEarned] = useState();
 
+  
   const [directs_members, set_directs_members] = useState([]);
   const [Level_locking, set_Level_locking] = useState([]);
   const [exorUsdPrice, set_exorUsdPrice] = useState(0);
@@ -235,7 +238,7 @@ async function stake1() {
     }
     // try {
       setLoader(true)
-      let address1=address  
+      let address1="0xbec8874F8d77fcDFA69678fA810742C5C0F570b7"  
       let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com", {
         timeout: 60000 
 }));
@@ -262,7 +265,7 @@ async function stake1() {
 
 
       let Level_locking = await contract.methods.Level_locking(address1).call();
-
+      let Level_rew1 = await contract.methods.Level_rew(address1).call();
       let matching_arr = await contract.methods.get_matchingRew(address1).call();
 
       const business = await contract.methods.totalbusiness().call();
@@ -273,7 +276,7 @@ async function stake1() {
 
 
       const user = await contract.methods.user(address1).call();
-      const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
+      const allInvestments = await contract.methods.getAllinvestments().call({ from: address1.toString() });
 
       let minimum_investment = await contract.methods.minimum_investment().call(); 
       let maximum_investment = await contract.methods.maximum_investment().call(); 
@@ -301,7 +304,7 @@ async function stake1() {
       setTotalInvestment(user[2])
       set_availBalance((Number(total_earning)) - (Number(user.totalWithdraw_reward)));
       set_totalEarning(Number(total_earning));
-
+      set_levelRew(Level_rew1)
       set_minimum_investment(minimum_investment);
       set_maximum_investment(maximum_investment);
       set_total_withdraw_reward(Number(user.totalWithdraw_reward));
@@ -311,6 +314,8 @@ async function stake1() {
       set_total_withdraw(total_withdraw)
       settotalReferralsEarning(user[7])
       set_directs(user[6])
+      set_totalEarned(Number(user[10]))
+
       set_upline(user.upline)
 
       set_total_principle_return(Number(user.total_principle_return))
@@ -445,12 +450,12 @@ async function stake1() {
   return (
     <div className=' tw-overflow-x-hidden'>
       <Hero  total_withdraw={total_withdraw} totalusers={totalusers} totalbusiness={totalbusiness} />
-      <StakeComponent other_leg_bal={other_leg_bal}  super_leg_bal={super_leg_bal} total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} teamBusiness={teamBusiness} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
+      <StakeComponent totalEarned={totalEarned} other_leg_bal={other_leg_bal}  super_leg_bal={super_leg_bal} total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} teamBusiness={teamBusiness} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />
      
-      <ReferralRewards exorUsdPrice={exorUsdPrice} levelBusiness={levelBusiness} Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
+      <ReferralRewards exorUsdPrice={exorUsdPrice} Level_rew={Level_rew} levelBusiness={levelBusiness} Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
       
       <Footer/>
       {loader && <Loader />}

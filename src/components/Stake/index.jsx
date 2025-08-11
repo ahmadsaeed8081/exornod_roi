@@ -80,7 +80,21 @@ const StakeComponent = (props) => {
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
-                  Total Income
+                  Total Earned Amount
+                </h6>
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                {Number(props.RoiEarning)>0?((Number(props.RoiEarning)/10**6)+(Number(props.totalEarned)/10**6)):0}
+                  
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
+                
+              </div>
+            </div>
+
+            <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
+                  Total Released Amount
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
                   {Number(props.totalEarning)>0?(Number(props.totalEarning)/10**6):0}
@@ -90,6 +104,7 @@ const StakeComponent = (props) => {
                 
               </div>
             </div>
+
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
@@ -97,6 +112,19 @@ const StakeComponent = (props) => {
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
                   {Number(props.availBalance)>0?(Number(props.availBalance)/10**6):0}
+                  
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
+              </div>
+            </div>
+            <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
+                  ROI Earning
+                </h6>
+
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                  {Number(props.RoiEarning)>0?(Number(props.RoiEarning)/10**6):0}
                   
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> usdt</span>

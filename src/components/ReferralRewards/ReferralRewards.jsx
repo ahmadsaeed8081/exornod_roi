@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TeamMemberShipModal from "../TeamMemberShipModal/TeamMemberShipModal";
 
-const ReferralRewards = ({refCount,levelEarning,levelBusiness,directs_members, Level_locking,exorUsdPrice}) => {
+const ReferralRewards = ({Level_rew,refCount,levelEarning,levelBusiness,directs_members, Level_locking,exorUsdPrice}) => {
 
    const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -70,19 +70,25 @@ const ReferralRewards = ({refCount,levelEarning,levelBusiness,directs_members, L
 
                 <h3 className="tw-text-xl tw-font-medium tw-mb-4">{item.level}</h3>
                 <div className="tw-text-sm tw-space-y-2">
-                  <div className="tw-flex tw-justify-between">
-                    <span>Percentage</span>
+                  <div className="tw-flex tw-py-1 tw-justify-between">
+                    <span className="tw-flex tw-items-center">Percentage</span>
                     <span>{item.percentage}</span>
                   </div>
-                  <div className="tw-flex tw-justify-between">
-                    <span>Business</span>
+                  <div className="tw-flex tw-py-1 tw-justify-between">
+                    <span className="tw-flex tw-items-center" >Business</span>
                     <span>{levelBusiness[index]?(Number(levelBusiness[index])/10**6):0} usdt</span>
                   </div>
-                  <div className="tw-flex tw-py-2 tw-justify-between">
+                  <div className="tw-flex tw-py-1 tw-justify-between">
                     <span className="tw-flex tw-items-center">
-                      Earning
+                    Released Reward
                     </span>
                     <span className=" tw-flex tw-gap-1">  {levelEarning[index]?(Number(levelEarning[index])/10**6):0} usdt</span>
+                  </div>
+                  <div className="tw-flex tw-py-1 tw-justify-between">
+                    <span className="tw-flex tw-items-center">
+                    Earned Reward
+                    </span>
+                    <span className=" tw-flex tw-gap-1">  {Level_rew[index]?(Number(Level_rew[index])/10**6):0} usdt</span>
                   </div>
                   <div className="tw-flex tw-justify-between">
                     <span className="tw-flex tw-items-center">

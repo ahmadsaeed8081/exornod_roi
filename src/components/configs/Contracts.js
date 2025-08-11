@@ -1,7 +1,7 @@
 
 export const USDT_address="0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
 export const cont_address="0xC070C9Ad45e9632Bd6fA6310724A3b5dAd56462d";//0xB1B66EfA8b05A2BA09e2dBA854de4583599129B9
-export const withdraw_cont="0xA6b89909bddec1f72daD9E2015E4Cce028427311";
+// export const withdraw_cont="0xA6b89909bddec1f72daD9E2015E4Cce028427311";
 export const withdraw_cont_abi=[
 	{
 		"inputs": [],
@@ -237,18 +237,8 @@ export const cont_abi=[
 			},
 			{
 				"internalType": "address",
-				"name": "add",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
 				"name": "_referral",
 				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "time",
-				"type": "uint256"
 			}
 		],
 		"name": "invest",
@@ -290,6 +280,11 @@ export const cont_abi=[
 	},
 	{
 		"inputs": [
+			{
+				"internalType": "address",
+				"name": "add",
+				"type": "address"
+			},
 			{
 				"internalType": "uint256",
 				"name": "_amount",
@@ -675,6 +670,25 @@ export const cont_abi=[
 				"internalType": "bool[]",
 				"name": "referralLevels_locked",
 				"type": "bool[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "add",
+				"type": "address"
+			}
+		],
+		"name": "Level_rew",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "_arr",
+				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
