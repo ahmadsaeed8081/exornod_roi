@@ -1,6 +1,6 @@
 
 export const USDT_address="0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
-export const cont_address="0xB1B66EfA8b05A2BA09e2dBA854de4583599129B9";
+export const cont_address="0xC070C9Ad45e9632Bd6fA6310724A3b5dAd56462d";//0xB1B66EfA8b05A2BA09e2dBA854de4583599129B9
 export const withdraw_cont="0xA6b89909bddec1f72daD9E2015E4Cce028427311";
 export const withdraw_cont_abi=[
 	{
@@ -206,25 +206,6 @@ export const cont_abi=[
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_period",
-				"type": "uint256"
-			}
-		],
-		"name": "change_investmentPeriod",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
 				"name": "_inv",
 				"type": "uint256"
 			}
@@ -242,7 +223,7 @@ export const cont_abi=[
 	},
 	{
 		"inputs": [],
-		"name": "initalized",
+		"name": "initialize",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -256,8 +237,18 @@ export const cont_abi=[
 			},
 			{
 				"internalType": "address",
+				"name": "add",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
 				"name": "_referral",
 				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "time",
+				"type": "uint256"
 			}
 		],
 		"name": "invest",
@@ -396,19 +387,6 @@ export const cont_abi=[
 	},
 	{
 		"inputs": [],
-		"name": "get_curr_day",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "curr_month",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
 		"name": "get_ExorPriceInUSDT",
 		"outputs": [
 			{
@@ -426,14 +404,33 @@ export const cont_abi=[
 				"internalType": "address",
 				"name": "_add",
 				"type": "address"
+			}
+		],
+		"name": "get_level_earning",
+		"outputs": [
+			{
+				"internalType": "uint256[20]",
+				"name": "LevelRewards",
+				"type": "uint256[20]"
 			},
 			{
 				"internalType": "uint256",
-				"name": "day_no",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "get_givenDay_matchingRew",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			}
+		],
+		"name": "get_matchingRew",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -448,54 +445,6 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "ol",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "day_no",
-				"type": "uint256"
-			}
-		],
-		"name": "get_givenDay_roi",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "roi_earning",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "_add",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "day_no",
-				"type": "uint256"
-			}
-		],
-		"name": "get_max_roi",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -529,31 +478,30 @@ export const cont_abi=[
 				"type": "address"
 			}
 		],
-		"name": "get_totalEarning",
+		"name": "get_roi_earning",
 		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "total_earning",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256[20]",
-				"name": "levelEarning",
-				"type": "uint256[20]"
-			},
 			{
 				"internalType": "uint256",
 				"name": "roi_earning",
 				"type": "uint256"
-			},
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_add",
+				"type": "address"
+			}
+		],
+		"name": "get_totalEarning",
+		"outputs": [
 			{
 				"internalType": "uint256",
-				"name": "direct_earning",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "matching_ear",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -613,12 +561,7 @@ export const cont_abi=[
 					},
 					{
 						"internalType": "uint256",
-						"name": "roi",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "matching_business",
+						"name": "total_deductDays",
 						"type": "uint256"
 					}
 				],
@@ -688,11 +631,11 @@ export const cont_abi=[
 				"type": "address"
 			}
 		],
-		"name": "Level_count",
+		"name": "Level_business",
 		"outputs": [
 			{
 				"internalType": "uint256[]",
-				"name": "_arr",
+				"name": "referralLevels_locked",
 				"type": "uint256[]"
 			}
 		],
@@ -703,21 +646,16 @@ export const cont_abi=[
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "inv",
+				"name": "add",
 				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "day_no",
-				"type": "uint256"
 			}
 		],
-		"name": "Level_earning",
+		"name": "Level_count",
 		"outputs": [
 			{
-				"internalType": "uint256[20]",
-				"name": "arr1",
-				"type": "uint256[20]"
+				"internalType": "uint256[]",
+				"name": "_arr",
+				"type": "uint256[]"
 			}
 		],
 		"stateMutability": "view",
@@ -922,6 +860,21 @@ export const cont_abi=[
 			{
 				"internalType": "uint256",
 				"name": "total_directIncome",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalEarned",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "matching_business",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "total_team",
 				"type": "uint256"
 			}
 		],

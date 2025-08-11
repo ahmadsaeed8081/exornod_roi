@@ -154,6 +154,35 @@ const StakeComponent = (props) => {
 
             </div>
             <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
+                  Total Team
+                </h6>
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                  {Number(props.team)>0?(Number(props.team)):0} 
+                </span>
+                {/* <span className="  tw-text-white  tw-font-sm"> usdt</span> */}
+
+              </div>
+
+            </div>
+
+            <div className=" col-md-6">
+              <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
+                <h6 className="   tw-text-white  tw-font-inter ">
+                  Total Team Business
+                </h6>
+                <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
+                  {Number(props.teamBusiness)>0?(Number(props.teamBusiness)/10**6):0} 
+                </span>
+                <span className="  tw-text-white  tw-font-sm"> usdt</span>
+
+              </div>
+
+            </div>
+
+
+            <div className=" col-md-6">
               <div className=" tw-border  tw-cursor-pointer tw-border-textColor   tw-rounded-3xl  p-4">
                 <div className=" tw-flex tw-justify-between tw-items-center">
                   <h6 className="   tw-text-white  tw-font-inter ">
@@ -194,7 +223,7 @@ const StakeComponent = (props) => {
                 Super Leg Business
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
-                {Number(props.sp_leg_bal)>0?(Number(props.sp_leg_bal)/10**6):0} 
+                {Number(props.super_leg_bal)>0?(Number(props.super_leg_bal)/10**6):0} 
                 </span>
                 <span className="  tw-text-white  tw-font-sm"> usdt</span>
 

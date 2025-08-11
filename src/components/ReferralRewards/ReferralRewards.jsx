@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TeamMemberShipModal from "../TeamMemberShipModal/TeamMemberShipModal";
 
-const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking,exorUsdPrice}) => {
+const ReferralRewards = ({refCount,levelEarning,levelBusiness,directs_members, Level_locking,exorUsdPrice}) => {
 
    const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -73,6 +73,10 @@ const ReferralRewards = ({refCount,levelEarning,directs_members, Level_locking,e
                   <div className="tw-flex tw-justify-between">
                     <span>Percentage</span>
                     <span>{item.percentage}</span>
+                  </div>
+                  <div className="tw-flex tw-justify-between">
+                    <span>Business</span>
+                    <span>{levelBusiness[index]?(Number(levelBusiness[index])/10**6):0} usdt</span>
                   </div>
                   <div className="tw-flex tw-py-2 tw-justify-between">
                     <span className="tw-flex tw-items-center">

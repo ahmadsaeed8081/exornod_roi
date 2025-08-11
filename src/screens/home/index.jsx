@@ -16,8 +16,6 @@ import {
   USDT_address,
   cont_address,
   cont_abi,       
-  withdraw_cont,
-  withdraw_cont_abi
 
 } from "../../components/configs/Contracts.js";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
@@ -69,7 +67,9 @@ const Home = () => {
 
   const [totlaInvestment, setTotalInvestment] = useState(0);
   const [totalEarning, set_totalEarning] = useState(0);
+  const [levelBusiness, set_levelBusiness] = useState([]);
   const [levelEarning, set_levelEarning] = useState([]);
+
   const [refCount, set_refCount] = useState([]);
 
   const [directs, set_directs] = useState("0");
@@ -79,6 +79,8 @@ const Home = () => {
 
   const [usdt_balance, set_usdtBalance] = useState(0);
   const [team, set_team] = useState(0);
+  const [teamBusiness, set_teamBusiness] = useState(0);
+
   const [maximum_investment, set_maximum_investment] = useState(0);
 
   
@@ -112,7 +114,7 @@ const Home = () => {
   const [rank, set_rank] = useState(0);
   const [total_principle_return    ,   set_total_principle_return] = useState(0);
 
-
+  
   const [state, setState] = useState({
     days: 0,
     minutes: 0,
@@ -199,30 +201,16 @@ async function stake1() {
 
   async function claim1() {
 
-    const web3 = new Web3(); // no provider needed for signing
-const privateKey = process.env.REACT_APP_PRIVATE_KEY;
-;
-// Helper to sign withdraw data
-  // Encode the message just like Solidity would do
-  const message = web3.utils.soliditySha3(
-    { type: 'address', value: address },
-    { type: 'uint256', value: totalEarning },
-    { type: 'uint256', value: curr_time }
-  );
-
-  // Sign the hash
-  const { signature } = web3.eth.accounts.sign(message, privateKey);
-
-
+    
     try {
 
 
         const tx = await writeContractAsync({
-          abi: withdraw_cont_abi,
-          address: withdraw_cont,
+          abi: cont_abi,
+          address: cont_address,
           functionName: "withdrawReward", 
           args: [
-            (Number(withdraw_Amount)*10**6),totalEarning,curr_time,signature
+            (Number(withdraw_Amount)*10**6)
           ],
   
         });
@@ -240,108 +228,65 @@ const privateKey = process.env.REACT_APP_PRIVATE_KEY;
   const search = useLocation().search;
   const id = new URLSearchParams(search).get("ref");
 
-  const count1 = (_deadline) => {
-    console.log("here is deadine "+_deadline)
-    var now = new Date().getTime();
-    _deadline = Number(_deadline) * 1000;
-    var t;
-    if ( Number(now) <  Number(_deadline)) {
-      t = Number(_deadline) - Number(now);
-      console.log(" its count " + _deadline + "   " + now + "   " + t);
-      // console.log(deadline)
-      var dd = Math.floor(t / (1000 * 60 * 60 * 24));
-      var hh = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var mm = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-      var ss = Math.floor((t % (1000 * 60)) / 1000);
 
-      var days = dd < 10 ? "0" + dd : dd;
-      var hours = hh < 10 ? "0" + hh : hh;
-      var minutes = mm < 10 ? "0" + mm : mm;
-      var seconds = ss < 10 ? "0" + ss : ss;
-
-
-      if (days > 0) {
-        return Number(days)+1 + " days";
-      } else if (hours > 0) {
-        return Number(hours)+1 + " hours";
-      } else if (minutes > 0) {
-        return Number(minutes)+1 + " minutes";
-      } else {
-        return Number(seconds)+1 + " seconds";
-      }
-    } else {
-      return "Expired";
-    }
-  };
-
-
-  function Convert_To_Wei(val) {
-    const web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com"));
-  
-    val = web3.utils.toWei(val.toString(), "ether");
-    return val;
-  }
   async function mount() {
     if (isDisconnected) {
       return;
     }
     // try {
       setLoader(true)
-      let address1=address
+      let address1=address  
       let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com", {
         timeout: 60000 
 }));
-      //  alert(web3.utils.sha3( "initalized()").substr(0, 10))
+      //  alert(web3.utils.sha3( "initialize()").substr(0, 10))
       // let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh"));
 
       const pol_balance = await web3.eth.getBalance(address);
 
       const contract = new web3.eth.Contract(cont_abi, cont_address);
-      const withdraw_contract = new web3.eth.Contract(withdraw_cont_abi, withdraw_cont);
 
       const contract_usdt = new web3.eth.Contract(token_abi, USDT_address);
 
       let usdt_balance = await contract_usdt.methods.balanceOf(address1).call();
       let directs_members= await contract.methods.ReferralsList().call({from : address1.toString()});
       let Level_count = await contract.methods.Level_count(address1).call();
+      let Level_business = await contract.methods.Level_business(address1).call();
 
-      console.log(Level_count)
-      let arr;
-        arr= await contract.methods.get_totalEarning(address1).call();
-
-      console.log(arr)
+      // let arr;
+      let total_earning= await contract.methods.get_totalEarning(address1).call();
+      let level_earning= await contract.methods.get_level_earning(address1).call();
+      let roi_earning= await contract.methods.get_roi_earning(address1).call();
 
       let exorUsdPrice= await contract.methods.get_ExorPriceInUSDT().call();
 
 
       let Level_locking = await contract.methods.Level_locking(address1).call();
-      let curr_day = await contract.methods.get_curr_day(address1).call();
-      const latestBlock = await web3.eth.getBlock("latest");
-      const timestamp = latestBlock.timestamp;
-      set_curr_time(timestamp);
-      let matching_arr = await contract.methods.get_givenDay_matchingRew(address1,Number(curr_day)).call();
+
+      let matching_arr = await contract.methods.get_matchingRew(address1).call();
 
       const business = await contract.methods.totalbusiness().call();
       const totalusers = await contract.methods.totalusers().call();
       const total_withdraw = await contract.methods.total_withdraw().call();
       let rank_no = await contract.methods.get_rank(address1).call(); 
-      let total_withdraw1 = await withdraw_contract.methods.total_withdraw(address1).call(); 
+      // let total_withdraw1 = await withdraw_contract.methods.total_withdraw(address1).call(); 
 
 
       const user = await contract.methods.user(address1).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address.toString() });
-      // const allInvestments = await contract.methods.getAllinvestments().call({ from: "0x59979b5b99E2c06e900F21Bf015bAc055bB5DC84" });
 
       let minimum_investment = await contract.methods.minimum_investment().call(); 
       let maximum_investment = await contract.methods.maximum_investment().call(); 
 
-      let team;
-
+      let temp=0;
+      let team_business=0;
       for(let i=0;i<20;i++)
       {
-        team+=Number(Level_count[i]);
+        // alert(Number(Level_count[i]))
+        temp+=Number(Level_count[i]);
+        // alert(Number(temp))
+        team_business+=Number(Level_business[i]);
       }
-
 
       if (id != null) {
 
@@ -354,31 +299,38 @@ const privateKey = process.env.REACT_APP_PRIVATE_KEY;
       setBalance(pol_balance);
       set_usdtBalance(usdt_balance);
       setTotalInvestment(user[2])
-      set_availBalance((Number(arr.total_earning)) - (Number(user.totalWithdraw_reward)+Number(total_withdraw1)));
-      // set_totalEarning(Number(arr.total_earning));
+      set_availBalance((Number(total_earning)) - (Number(user.totalWithdraw_reward)));
+      set_totalEarning(Number(total_earning));
+
       set_minimum_investment(minimum_investment);
       set_maximum_investment(maximum_investment);
-      set_total_withdraw_reward(Number(user.totalWithdraw_reward)+Number(total_withdraw1));
+      set_total_withdraw_reward(Number(user.totalWithdraw_reward));
       setbusiness(business);
+
       set_totalusers(totalusers)
       set_total_withdraw(total_withdraw)
       settotalReferralsEarning(user[7])
       set_directs(user[6])
       set_upline(user.upline)
+
       set_total_principle_return(Number(user.total_principle_return))
       set_Level_locking(Level_locking)
-      set_totalEarning(Number(arr.total_earning))
-      set_levelEarning(arr.levelEarning);
-      set_RoiEarning(Number(arr.roi_earning))
-      set_todayEarning(Number(arr.direct_earning))
-      set_MatchingEarning(Number(arr.matching_ear))
+      // set_totalEarning(Number(total_earning))
+      set_levelEarning(level_earning.LevelRewards);
+      set_levelBusiness(Level_business)
+      set_RoiEarning(Number(roi_earning))
+      set_todayEarning(Number(user[9]))
+      set_MatchingEarning(Number(matching_arr.rew))
       set_exorUsdPrice(Number(exorUsdPrice)/10**18)
-      set_team(team)
-      set_refCount(Level_count);
-      set_super_leg_bal(matching_arr.sl)
-      set_other_leg_bal(matching_arr.ol)
+      set_team(temp)
+      set_teamBusiness(team_business)
 
-      set_Allinvestment(allInvestments)
+      set_refCount(Level_count);
+      // alert(Number(matching_arr.sl))
+      set_super_leg_bal(Number(matching_arr.sl))
+      set_other_leg_bal(Number(matching_arr.ol))
+
+      set_Allinvestment(allInvestments)     
 
       setLoader(false)
 
@@ -450,10 +402,10 @@ const privateKey = process.env.REACT_APP_PRIVATE_KEY;
           alert("please write amount ");
           return
         }
-        // if (Number(withdraw_Amount) < 10) {
-        //   alert("You can't withdraw less than 10$");
-        //   return
-        // }
+        if (Number(withdraw_Amount) < 10) {
+          alert("You can't withdraw less than 10$");
+          return
+        }
         // if (Number(withdraw_Amount) > Number(maxWithdraw)/10**18) {
         //   alert("You can't withdraw more than "+Number(maxWithdraw)/10**18);
         //   return
@@ -493,12 +445,12 @@ const privateKey = process.env.REACT_APP_PRIVATE_KEY;
   return (
     <div className=' tw-overflow-x-hidden'>
       <Hero  total_withdraw={total_withdraw} totalusers={totalusers} totalbusiness={totalbusiness} />
-      <StakeComponent other_leg_bal={other_leg_bal}  super_leg_bal={super_leg_bal} total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
+      <StakeComponent other_leg_bal={other_leg_bal}  super_leg_bal={super_leg_bal} total_principle_return={total_principle_return} rank={rank} exorUsdPrice={exorUsdPrice} maximum_investment={maximum_investment} MatchingEarning={MatchingEarning} upliner={upliner} team={team} teamBusiness={teamBusiness} withdrawFee={withdrawFee} todayEarning={todayEarning} availBalance={availBalance} exor_balance={exor_balance} RoiEarning={RoiEarning} directs={directs} levelEarning={levelEarning} total_withdraw_reward={total_withdraw_reward} totalReferralsEarning={totalReferralsEarning} withdraw_Amount={withdraw_Amount} setInvestment={setInvestment}  minimum_investment={minimum_investment}  Invest={Invest} set_withdraw_Amount={set_withdraw_Amount}  WithdrawReward={WithdrawReward} investment={investment} totlaInvestment={totlaInvestment} totalEarning={totalEarning} address={address}/>
 
       {/* <StakeComponent   /> */}
       <InvestmentHistory Allinvestment={Allinvestment} />
      
-      <ReferralRewards exorUsdPrice={exorUsdPrice} Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
+      <ReferralRewards exorUsdPrice={exorUsdPrice} levelBusiness={levelBusiness} Level_locking={Level_locking} directs_members={directs_members} refCount={refCount} levelEarning={levelEarning} />
       
       <Footer/>
       {loader && <Loader />}
