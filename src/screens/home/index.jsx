@@ -243,7 +243,6 @@ async function stake1() {
         timeout: 60000 
 }));
       //  alert(web3.utils.sha3( "initialize()").substr(0, 10))
-      // let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-mainnet.g.alchemy.com/v2/Xr86iyHzmF6-yzBAqV5rd_PW7ds7QKlh"));
 
       const pol_balance = await web3.eth.getBalance(address);
 

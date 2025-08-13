@@ -80,16 +80,16 @@ const ReferralRewards = ({Level_rew,refCount,levelEarning,levelBusiness,directs_
                   </div>
                   <div className="tw-flex tw-py-1 tw-justify-between">
                     <span className="tw-flex tw-items-center">
-                    Released Reward
+                    Total Earning
                     </span>
                     <span className=" tw-flex tw-gap-1">  {levelEarning[index]?(Number(levelEarning[index])/10**6):0} usdt</span>
                   </div>
-                  <div className="tw-flex tw-py-1 tw-justify-between">
+                  {/* <div className="tw-flex tw-py-1 tw-justify-between">
                     <span className="tw-flex tw-items-center">
                     Earned Reward
                     </span>
                     <span className=" tw-flex tw-gap-1">  {Level_rew[index]?(Number(Level_rew[index])/10**6):0} usdt</span>
-                  </div>
+                  </div> */}
                   <div className="tw-flex tw-justify-between">
                     <span className="tw-flex tw-items-center">
                       Team Member

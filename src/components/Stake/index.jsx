@@ -77,7 +77,7 @@ const StakeComponent = (props) => {
                 </div>
               </div>
             </div>
-            <div className=" col-md-6">
+            {/* <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
                   Total Earned Amount
@@ -89,12 +89,12 @@ const StakeComponent = (props) => {
                 <span className="  tw-text-white  tw-font-sm"> usdt</span>
                 
               </div>
-            </div>
+            </div> */}
 
             <div className=" col-md-6">
               <div className=" tw-border  tw-border-textColor   tw-rounded-3xl  p-4">
                 <h6 className="   tw-text-white  tw-font-inter ">
-                  Total Released Amount
+                  Total Income
                 </h6>
                 <span className="  tw-text-white  tw-font-medium  tw-font-inter tw-text-2xl">
                   {Number(props.totalEarning)>0?(Number(props.totalEarning)/10**6):0}
