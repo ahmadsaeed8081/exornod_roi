@@ -238,7 +238,7 @@ async function stake1() {
     }
     // try {
       setLoader(true)
-      let address1=address  
+      let address1=address;
       let web3= new Web3(new Web3.providers.HttpProvider("https://polygon-bor-rpc.publicnode.com", {
         timeout: 60000 
 }));
@@ -252,6 +252,9 @@ async function stake1() {
 
       let usdt_balance = await contract_usdt.methods.balanceOf(address1).call();
       let directs_members= await contract.methods.ReferralsList().call({from : address1.toString()});
+
+      console.log(directs_members);
+
       let Level_count = await contract.methods.Level_count(address1).call();
       let Level_business = await contract.methods.Level_business(address1).call();
 
@@ -276,7 +279,7 @@ async function stake1() {
 
       const user = await contract.methods.user(address1).call();
       const allInvestments = await contract.methods.getAllinvestments().call({ from: address1.toString() });
-
+      console.log(allInvestments)
       let minimum_investment = await contract.methods.minimum_investment().call(); 
       let maximum_investment = await contract.methods.maximum_investment().call(); 
 
